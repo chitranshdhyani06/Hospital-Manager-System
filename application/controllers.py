@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, request
 from flask import current_app as app
 from application.models import *
-from sqlalchemy import func
+from sqlalchemy import func, or_, and_
 
 @app.route("/")
 def index():
@@ -55,6 +55,14 @@ def register():
       db.session.commit()
       return render_template("login.html")
   return render_template("register.html")
+
+@app.route("/admin_search", methods=["GET", "POST"])
+def a_search():
+  if request.method == "POST":
+    variable = request.form.get("search")
+    doctors = Doctor.query.filter(and_(Doctor.type=="Doctor",or_(Doctor.id==variable,Doctor.doctor_name==variable,Doctor.doctor_specs==variable,))).all()
+    patients = User.query.filter(and_(User.type=="Patient", or_(User.name==variable, User.id==variable))).all()
+    return render_template("search_result.html", doctors=doctors, patients=patients)
     
 @app.route("/admin_dash")
 def admin():

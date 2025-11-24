@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+  <style>
+    .body{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    #searched{
+      height: 400px;
+      padding: 10px;
+      width: 600px;
+      margin: auto;
+      margin-top: 150px;
+      border: 1px black solid;
+      overflow-x: auto;
+    }
+    .btn-close{
+      float: right;
+    }
+
+  </style>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+  <div id="main">
+    <div id="canvas">
+      <div id="searched">
+        <button type="button" class="btn-close" aria-label="Close" onclick="window.history.back()"></button>
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for doc in doctors or patients %}
+            <tr>
+              <td>{{doc.id}}</td>
+              <td>{{doc.doctor_name}}{{doc.name}}</td>
+              <td>{{doc.type}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
