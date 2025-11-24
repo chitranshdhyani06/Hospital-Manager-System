@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Admin-Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <style>
+    .add-doctor {
+      margin-top: 5px;
+      float: right;
+      margin-right: 12px;
+      border-radius: 5px;
+      border: 1px solid black;
+      text-decoration: none;
+    }
+
+    .add-doctor:hover {
+      color: azure;
+      background-color: rgb(202, 136, 202);
+    }
+
+    .search-button {
+      background-color: rgb(207, 79, 207);
+      border-radius: 5px;
+      margin-left: 2px;
+    }
+
+    .search-button:hover {
+      color: azure;
+      border-radius: 5px;
+      background-color: rgb(173, 29, 173);
+      margin-left: 2px;
+    }
+
+    .navbar {
+      background-color: #efeaee;
+    }
+
+    .admin-dash-text {
+      margin-top: 5px;
+      margin-left: 35px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main">
+    <div id="canvas">
+      <nav class="navbar navbar-expand-lg navbar-light bg-#efeaee">
+        <div class="container">
+          <a class="navbar-brand" href="#">Welcome Admin</a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            </ul>
+            <form class="d-flex" action="/admin_dash" method="post">
+              <input class="text-box-add-doctor" type="search" placeholder="Search" aria-label="Search">
+              <button class="search-button" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <p>
+        <a href="/add_doctor" class="add-doctor">Add</a>
+      </p>
+      <h5 class="admin-dash-text">Registered Doctor</h5>
+      <div id="registered-doctor">
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Specialization</th>
+              <th scope="col">Experience</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for doc in all_doctor %}
+            <tr>
+              <th>{{doc.id}}</th>
+              <td>{{doc.doctor_name}}</td>
+              <td>{{doc.doctor_specs}}</td>
+              <td>{{doc.doctor_exp}}</td>
+              <td class="buttons">
+                <button class="delete-button" onclick="document.location='/delete/{{doc.id}}'">Delete</button>
+                {% if doc.type == 'blacklisted' %}
+                <button class="blacklist-button"
+                  onclick="document.location='/blacklist-doc/{{doc.id}}'">De-Blacklist</button>
+                {% else %}
+                <button class="De-Blacklist-button"
+                  onclick="document.location='/blacklist-doc/{{doc.id}}'">Blacklist</button>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <!-- ****** registered patient ****** -->
+      <h5 class="admin-dash-text">Registered Patients</h5>
+      <div id="registered-patient">
+        <table class="table table-borderless">
+          <tbody>
+            {% for user in all_user %}
+            <tr>
+              <th>{{user.id}}</th>
+              <td>{{user.name}}</td>
+              <td class="buttons">
+                <button class="delete-button" onclick="document.location='/delete/{{user.id}}'">Delete</button>
+                {% if user.type == 'blacklisted' %}
+                <button class="blacklist-button"
+                  onclick="document.location='/blacklist/{{user.id}}'">De-Blacklist</button>
+                {% else %}
+                <button class="De-Blacklist-button"
+                  onclick="document.location='/blacklist/{{user.id}}'">Blacklist</button>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+
+      <h5 class="admin-dash-text">Upcoming Appointments</h5>
+      <div id="upcoming-appointments">
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th scope="col">Sr. No.</th>
+              <th scope="col">Patient id</th>
+              <th scope="col">Doctor id</th>
+              <th scope="col">Doctor Name</th>
+              <th scope="col">Department</th>
+              <th scope="col">Patient's History</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for appoint in made_appointment %}
+            <tr>
+              <th>{{appoint.id}}</th>
+              <td>{{appoint.user_id}}</td>
+              <td>{{appoint.doctor_id}}</td>
+              <td>{{appoint.doctor_name}}</td>
+              <td>{{appoint.doctor_specs}}</td>
+              <td>
+                <button class="view-button" onclick="document.location='/view-history/{{appoint.user_id}}'">View</button>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

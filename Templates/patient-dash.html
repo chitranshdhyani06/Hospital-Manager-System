@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Patinet's Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <style>
+    .container-navbar{
+      width: 870px;
+      margin-left: 10px;
+    }
+    #canvas{
+      border: 2px solid black;
+    }
+    
+    .depart-names{
+      font-size: larger;
+      text-align-last: baseline;
+    }
+    .depart{
+      font-weight: 450;
+      padding-left: 15px;
+      margin-top: 10px;
+    }
+    
+  </style>
+
+</head>
+<body>
+  <div id="main">
+    <div id="canvas">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><h3>Welcome {{this_user.username}}</h3></a>
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/view-history/{{this_user.id}}">History</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+      <h4 class="depart">Departments</h4>
+      <div id="department">
+        
+          <table class="table">
+            <tbody>
+              {% for spec, count in detail %}
+                <tr>
+                  <td>{{ spec }}</td>
+                  <td>
+                    <a href="/department/{{this_user.id}}/{{spec}}" class="view-details-button">View Details</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        
+      </div>
+
+      <h4 class="depart">Upcoming Appointments</h4>
+      <div id="appointments">
+        <table class="table">
+          <thead>
+            <th>Sr No.</th> 
+            <th>Doctor Name</th>
+            <th>Department</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th></th> 
+          </thead>
+          <tbody>
+            {% for appoint in user_appoint %}
+              <tr>
+              <td>Dr. {{appoint.doctor_name}}</td>
+              <td>{{appoint.doctor_specs}}</td>
+              <td>{{appoint.date}}</td>
+              <td>{{appoint.time}}</td>
+              <td>
+                <button class="delete-button" onclick="document.location='/cancle_by_user/{{appoint.id}}'">Cancle</button>
+              </td>
+            </tr>
+            {% endfor %}            
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

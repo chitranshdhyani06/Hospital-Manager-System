@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Register-Page</title>
+  <style>
+    .dropdown-container {
+      position: relative;
+      width: 250px;
+      padding-bottom: 5px;
+    }
+
+    #roleInput {
+      margin-left: 3px;
+      width: 50%;
+      padding-left: 2px ;
+      font-family: Arial, Helvetica, sans-serif;
+      border-radius: 5px;
+      border: 2px solid grey;
+      
+    }
+
+    #roleInput:hover {
+      border-color: rgb(188, 147, 182);   
+      box-shadow: 0 0 5px rgb(150, 128, 150);
+    }
+
+    .options {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      display: none;
+      flex-direction: column;
+      z-index: 10;
+    }
+
+    .option {
+      padding: 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .option:hover {
+      background: #e5f0ff;
+      
+    }
+
+    .show {
+      display: flex;
+    }
+
+  </style>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+  <div id="main-login">
+    <div id="canvas-login">
+      <div id="form-body-register">
+        <form action="/register" method="post">
+          <h2 class="text">Registration Form</h2>
+          <div class="mb-3">
+            <label for="username" class="register-username">Username:</label>
+            <input type="text" class="username" id="username" name="username">
+          </div>
+          <div class="mb-3">
+            <label for="name" class="register-username">Full Name:</label>
+            <input type="text" class="username" id="name" name="name">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="register-email">Email:</label>
+            <input type="email" class="username" id="email" name="email">
+          </div>
+          <div class="mb-3">
+            <label for="pass" class="register-password">Password:</label>
+            <input type="password" class="username" id="pass" name="pwd">
+          </div>
+          <div class="dropdown-container">
+            <input type="text" id="roleInput" placeholder="Select Gender" readonly name="gender">
+            <div class="options" id="roleOptions">
+              <div class="option">Male</div>
+              <div class="option">Female</div>
+            </div>
+          </div>
+          <input type="submit" class="register-button" value="Register">
+        </form>
+        
+        <p class="text-2">Already a user?<a href="/login">login</a></p>
+
+
+        <script>
+          const input = document.getElementById('roleInput');
+          const options = document.getElementById('roleOptions');
+          const optionItems = document.querySelectorAll('.option');
+
+          input.addEventListener('click', () => {
+            options.classList.toggle('show');
+          });
+
+          optionItems.forEach(option => {
+            option.addEventListener('click', () => {
+              input.value = option.textContent;
+              options.classList.remove('show');
+            });
+          });
+
+          // Hide dropdown when clicking outside
+          document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown-container')) {
+              options.classList.remove('show');
+            }
+          });
+        </script>
+
+      </div>  
+    </div>
+  </div>
+</body>
+</html>
