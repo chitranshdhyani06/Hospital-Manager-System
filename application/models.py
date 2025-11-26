@@ -24,17 +24,14 @@ class Doctor(db.Model):
 class Request(db.Model):
   req_id = db.Column(db.Integer, primary_key=True)
   user_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable = False)
-  doctor_id = db.Column(db.Integer(), db.ForeignKey("doctor.id"), nullable = False)
+  doctor_id = db.Column(db.String(), db.ForeignKey("doctor.id"), nullable = False)
   date = db.Column(db.Integer(), nullable = False)
 
 class CompletedRequest(db.Model):
   comp_req_id = db.Column(db.Integer, primary_key=True)
-  req_id = db.Column(db.Integer(), db.ForeignKey("request.req_id"), nullable=False)
-  user_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=False)
-  doctor_id  = db.Column(db.Integer(), db.ForeignKey("doctor.id"), nullable=False)
-  diagnosis = db.Column(db.Text())
-  prescription = db.Column(db.Text())
-  medicines = db.Column(db.Text())
+  req_id = db.Column(db.Integer(), nullable=False)
+  user_id = db.Column(db.Integer(), nullable=False)
+  doctor_id  = db.Column(db.String(), nullable=False)
 
 class Dates(db.Model):
   id = db.Column(db.Integer, primary_key=True)
@@ -55,15 +52,15 @@ class Appointment(db.Model):
   date = db.Column(db.Date(), nullable=False)
   time = db.Column(db.String(), nullable=True)
   status = db.Column(db.String(), default="pending")
-  doctor_id  = db.Column(db.Integer(), nullable=False)
+  doctor_id  = db.Column(db.String(), nullable=False)
   user_id = db.Column(db.Integer(), nullable=False)
   # date_id = db.Column(db.Integer(), db.ForeignKey("date.id"), nullable=False)
 
 class History(db.Model):
   id = db.Column(db.Integer, primary_key=True)
-  visitnum = db.Column(db.Integer(), default="-")
-  testDone = db.Column(db.String(), default="-")
-  diagnosis = db.Column(db.String(), default="-")
-  medicine = db.Column(db.String(), default="-")
-  prescription = db.Column(db.Text(), default="-")
-  user_id = db.Column(db.Integer(), nullable=False)
+  visitnum = db.Column(db.Integer())
+  testDone = db.Column(db.String())
+  diagnosis = db.Column(db.String())
+  medicine = db.Column(db.String())
+  prescription = db.Column(db.Text())
+  user_id = db.Column(db.Integer())

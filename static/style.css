@@ -3,14 +3,15 @@
 }
 
 #main-login{
-  margin-top: 1px;
+  margin-top: 0px;
   border: 1px solid black;
   padding-top: 0px;
-  background-color: rgb(229, 226, 229);
-
+  background-color: rgb(255, 219, 255);
+  height: 729px;
+  background: linear-gradient(135deg, #ffddf2, #fdf2fd);
 }
 
-#canvas-login{
+/* #canvas-login{
   margin:auto;
   height: 720px;
   width: 70vw;
@@ -19,53 +20,61 @@
   background-color: #c177b2;
   background-image: linear-gradient(0deg, #c177b2 0%, #e2e1e1 95%);
   
-}
+} */
 
 #main{
-  margin-top: 1px;
+  
   border: 1px solid black;
   padding-top: 0px;
-  
+  height: 729px;
   background-color: #c177b2;
-  background-image: linear-gradient(0deg, #c177b2 0%, #e2e1e1 50%);
+  /* background-image: linear-gradient(0deg, #c177b2 0%, #e2e1e1 50%); */
+  background: linear-gradient(135deg, #fceff7, #fbf4f8);
 }
 
-#canvas{
+/* #canvas{
   margin:auto;
-  height: 720px;
+  height: 727px;
   width: 70vw;
-  background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(13, 3, 13);
-}
+  background-color: white;
+  /* border: 1px solid rgb(13, 3, 13); */
+/*} */
 
 #form-body-login{
   margin: auto;
-  border: 2px solid gray;
-  width: 250px;
-  height: 320px;
-  margin-top: 200px;
-  background-color: #efeaee;
-  border-radius: 10px;
-  box-shadow: 0px 0px 5px rgb(53, 47, 53);
+  margin-top: 150px;
+  width: 350px;
+  padding: 50px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 15px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.7s ease;
 }
 
 #form-body-register{
-  border: 2px solid gray;
-  width: 280px;
-  height: 455px;
   margin: auto;
-  margin-top: 130px;
-  background-color: #efeaee;
-  border-radius: 10px;
-  box-shadow: 0px 0px 5px rgb(53, 47, 53);
+  margin-top: 100px;
+  width: 380px;
+  padding: 50px;
+  padding-bottom: 10px;
+  padding-left: 60px;
+  padding-top: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 15px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 #patient-history{
-  border: 2px solid gray;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
   width:700px;
+  padding: 10px;
   height:500px;
   margin: auto;
   margin-top: 100px;
+  background-color: white;
   
 }
 .username {
@@ -93,27 +102,29 @@
 }
 
 .login-button{
-  margin-top: 10px;
-  margin-left: 85px;
-  padding-left: 15px;
-  padding-right: 15px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  padding-left: 95px;
+  padding-right: 95px;
   padding-top: 5px;
   padding-bottom: 5px;
-  border-radius: 15px;
+  border-radius: 7px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: larger;
-  color: #ffffff;
+  color: whitesmoke;
   background: #C476F9;
   background: linear-gradient(135deg, #C476F9, #E1B8FC);
 }
 .register-button{
-  margin-left: 65px;
-  padding-left: 15px;
-  padding-right: 15px;
+  
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding-left: 90px;
+  padding-right: 90px;
   padding-top: 5px;
   padding-bottom: 5px;
-  border-radius: 15px;
+  border-radius: 7px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: larger;
@@ -131,7 +142,7 @@
 }
 
 .text-1-1{
-  margin-top: 10px;
+  margin-top: 0px;
   margin-left: 10px;
 }
 
@@ -150,21 +161,24 @@
 
 .add-doctor{
   color: purple;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: large;
 }
 
 #form-body-add-doctor{
-  border: 2px solid gray;
-  width: 300px;
-  height: 470px;
+  border: 2px solid rgb(147, 147, 147);
+  width: 350px;
+  height: 540px;
+  padding: 20px;
   margin: auto;
-  margin-top: 115px;
-  background-color: #efeaee;
+  margin-top: 100px;
+  background-color: #ffffff;
   border-radius: 2px;
-  box-shadow: 0px 0px 5px rgb(53, 47, 53);
+  box-shadow: 0px 0px 7px rgb(53, 47, 53);
 }
 
 .cancle-button{
@@ -206,22 +220,35 @@
 }
 
 #registered-doctor,#registered-patient{
-  overflow-y: auto;
-  padding-bottom: 0px;
-  margin-left: 35px;
+  background: #ffffffcf;
+  padding: 10px;
+  border-radius: 15px;
   width: 1000px;
-  height: 187px;
-  border: 2px solid rgb(238, 212, 237);
+  height: 200px;
+  margin-bottom: 35px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  backdrop-filter: blur(5px);
+  margin-left: 265px;
+  margin-top: 20px;
+  overflow-y:auto;
+  scrollbar-width: none;
+  /* -ms-overflow-style: none;  */
 }
 
 #upcoming-appointments{
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding-bottom: 0px;
-  margin-left: 35px;
+  /* overflow-x: hidden; */
+  background: #ffffffcf;
+  padding: 10px;
+  border-radius: 15px;
   width: 1000px;
-  height: 95px;
-  border: 2px solid rgb(238, 212, 237);
+  margin-bottom: 35px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  backdrop-filter: blur(5px);
+  margin:auto;
+  margin-top: 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  height:150px
 }
 .buttons{
   float: right;
@@ -273,17 +300,33 @@
 }
 
 #assigned-patients{
-  overflow-x: hidden;
+  /* overflow-x: auto;
   overflow-y: auto;
+  scrollbar-width: none;
   padding-top: 10px;
+  margin-top: 20px;
   margin-left: 35px;
   width: 450px;
   height: 250px;
-  border: 2px solid rgb(238, 212, 237);
+  border: 2px solid rgb(238, 212, 237); */
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #ffffffcf;
+  padding: 20px;
+  border-radius: 15px;
+  width: 450px;
+  height: 300px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  backdrop-filter: blur(5px);
+  margin-left: 265px;
+  margin-top: 20px;
 }
 
 #department{
-  border: 2px solid grey;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  border-radius: 15px;
+  padding: 10px;
+  background-color: white;
   width: 800px;
   height: 280px;
   margin: auto;
@@ -312,19 +355,30 @@
 }
 
 #appointments{
-  border: 2px solid grey;
+  
   width: 860px;
-  height: 228px;
+  height: 250px;
   margin: auto;
+  margin-top: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  border-radius: 15px;
+  padding: 10px;
+  background-color: white;
+
   overflow-x: auto;
   scrollbar-width: none;
+
 }
 
 #list-group{
-  border: 2px solid grey;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  border-radius: 15px;
+  padding: 10px;
+  background-color: white;
   width: 1020px;
-  height: 328px;
+  height: 500px;
   margin: auto;
+  margin-top: 100px;
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -347,12 +401,15 @@
 }
 
 #doc-avail{
-  border: 2px solid gray;
-  height: 530px;
+  height: 550px;
   width: 800px;
   border-radius: 15px;
   margin: auto;
-  margin-top: 105px;
+  margin-top: 95px;
+  background-color: white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  backdrop-filter: blur(5px);
+  padding: 10px;
 }
 
 .dates{

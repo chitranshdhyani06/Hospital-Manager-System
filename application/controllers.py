@@ -81,7 +81,7 @@ def add_doc():
     doctor_exp = request.form.get("exp")
     doc_id = Doctor.query.filter_by(id = id).first()
     if doc_id:
-      return render_template("already-exist.html")
+      return render_template("doctor-already-exist.html")
     else:
       new_doc = Doctor(id=id,doctor_pass=doctor_pass,doctor_name=doctor_name,doctor_specs=doctor_specs,doctor_exp=doctor_exp)
       db.session.add(new_doc)
@@ -198,7 +198,7 @@ def history(doctor_id, user_id):
 def update(user_id, doctor_id):
   if request.method == "POST":
     visitnum = request.form.get("visitnum")
-    testDone = request.form.get("testdone")
+    testDone = request.form.get("testDone")
     diagnosis = request.form.get("diagnosis")
     medicine = request.form.get("medicine")
     prescription = request.form.get("prescription")
@@ -212,7 +212,8 @@ def completed(appoint_id):
   appoint = Appointment.query.filter_by(id=appoint_id).first()
   time_id = Time.query.filter(Time.date==appoint.date, Time.time==appoint.time).first()
   req = Request.query.filter(Request.user_id==appoint.user_id, Request.doctor_id==appoint.doctor_id, Request.date==time_id.id).first()
-  
+  completed = CompletedRequest(req_id=req.req_id, user_id=req.user_id, doctor_id=req.doctor_id)
+  db.session.add(completed)
   db.session.delete(appoint)
   db.session.delete(req)
   db.session.commit()

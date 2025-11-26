@@ -20,7 +20,7 @@ if __name__ == '__main__':
   Admin = User.query.filter_by(username="admin").first()
   time = Time.query.first()
   if Admin is None:
-    Admin = User(username = "admin", name="Admin1", email="admin1@gmail.com", password="admin123", gender="Male", type="admin")
+    Admin = User(username = "admin", name="Admin1", email="admin1@gmail.com", password="1234", gender="Male", type="admin")
     db.session.add(Admin)
     db.session.commit()
   
